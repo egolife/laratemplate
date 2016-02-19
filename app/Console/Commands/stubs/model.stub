@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyNamespace;
+
+use MyFinance\CustomModel as Model;
+
+class DummyClass extends Model
+{
+    //
+}
