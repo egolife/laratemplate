@@ -10,7 +10,7 @@
   "require": {
     "php": ">=5.5.9",
     "laravel/framework": "5.2.*",
-    "Illuminate/html": "^5.0",
+    "laravelcollective/html": "5.2.*",
     "jenssegers/date": "~3.0",
     "doctrine/dbal": "^2.5",
     "hernandev/hipchat-laravel": "dev-l5"
@@ -58,7 +58,10 @@
       "php artisan optimize"
     ],
     "pre-update-cmd": [
-      "php artisan clear-compiled"
+      "php artisan clear-compiled",
+      "php artisan ide-helper:generate",
+      "php artisan ide-helper:generate",
+      "php artisan ide-helper:models -n"
     ],
     "post-update-cmd": [
       "php artisan optimize"

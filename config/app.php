@@ -149,6 +149,13 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * 3rd party service providers...
+         */
+//        Collective\Html\HtmlServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
+        Hernandev\HipchatLaravel\HipchatLaravelServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         LaraTemplate\Providers\AppServiceProvider::class,
@@ -200,6 +207,12 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        /*
+         * Application Aliases...
+         */
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
     ],
 
 ];
