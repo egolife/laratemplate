@@ -9,7 +9,7 @@ return array(
     | Required API Token from HipChat
     |
     */
-    'api_token' => 'insert_your_api_token',
+    'api_token' => env('HIPCHAT_TOKEN'),
 
 
     /*
@@ -21,7 +21,7 @@ return array(
     | Length: from 1 to 15 characters
     |
     */
-    'app_name' => 'Your App Name',
+    'app_name' => env('APP_NAME', 'Laravel'),
 
 
     /*
@@ -34,5 +34,5 @@ return array(
     | when a room name is required
     |
     */
-    'default_room' => null, // this is optional
+    'default_room' => env('HIPCHAT_DEFAULT_ROOM', 'dev'), // this is optional
 );

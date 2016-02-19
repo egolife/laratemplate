@@ -213,6 +213,7 @@ return [
          */
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
+        'HipChat'   => Hernandev\HipchatLaravel\Facade\HipChat::class,
     ],
 
 ];

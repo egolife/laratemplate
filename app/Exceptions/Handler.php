@@ -3,6 +3,7 @@
 namespace LaraTemplate\Exceptions;
 
 use Exception;
+use HipChat;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -28,19 +29,28 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
+     * @param  \Exception $e
      * @return void
      */
     public function report(Exception $e)
     {
+        if (app()->environment('production')) {
+            $message = [
+                'Произошла ошибка: ' . $e->getMessage(),
+                'Файл: ' . $e->getFile(),
+                'Строка: ' . $e->getLine(),
+                'Код ошибки: ' . $e->getCode(),
+            ];
+            HipChat::sendMessage(implode('<br>', $message), 'red', true);
+        }
         parent::report($e);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception               $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
